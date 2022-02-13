@@ -1,4 +1,4 @@
-Thanks for taking your time and read my script :)    ( https://github.com/jeremyshen1987/Python/blob/main/HR_Scraper.py )
+Thanks for taking your time and read my script :)    ( https://github.com/jeremyshen1987/Python/blob/main/HarryRosen_Scraper.py)
 
 
 This is a webs scrapper for Harry Rosen sales page. 
