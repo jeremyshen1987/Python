@@ -5,7 +5,7 @@ import pandas as pd
 import datetime
 import pytz
 import csv
-from botocore.exceptions import ClientError
+import os
 
 
 Current_Time = datetime.datetime.now(tz=pytz.timezone('Canada/Mountain'))
@@ -120,14 +120,17 @@ def control_flow(page_num):
 
 
 
-
 login_url = 'https://honestdoor.auth0.com/u/login?state=hKFo2SB5T0h2XzhqSDBaeHlnRmZJRDlMR05vRV93bXZZdmpqbqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGlXUmJDazdmbEtCTTRmdHhvMHpLRTNkOTRPblBWVERHo2NpZNkgR3Rsa1FHN2g3d2NxNjNhemlsQXZndkUxNjFPRklpSXk'
+
+
+user = os.environ.get('HD_User')
+password = os.environ.get('HD_PW')
 
 payload = {
 
     'state': 'hKFo2SB5T0h2XzhqSDBaeHlnRmZJRDlMR05vRV93bXZZdmpqbqFur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGlXUmJDazdmbEtCTTRmdHhvMHpLRTNkOTRPblBWVERHo2NpZNkgR3Rsa1FHN2g3d2NxNjNhemlsQXZndkUxNjFPRklpSXk',
-    'username':'moonmana@gmail.com',
-    'password':'Tcgxg@760119',
+    'username':user,
+    'password':password,
     'action': 'default'
 
 }
@@ -137,7 +140,9 @@ Pg_Num = 1
 
 with requests.session() as s:
 
-    s.post(login_url, data = payload)
+    p = s.post(login_url, data = payload)
+
+    print(p.status_code)
 
     with open(f'{File_Name}.csv', 'a', newline='', encoding='utf-8') as f:
 
