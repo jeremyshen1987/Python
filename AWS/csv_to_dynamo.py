@@ -12,7 +12,7 @@ File_Name = str(Current_Date)
 dynamodb = boto3.resource('dynamodb')
 
 try:
-
+    # Use csv DictReader to grab each row and batchwrite to DynamoDB as document
     with open(f'{File_Name}.csv', newline='') as csvfile:
 
 
